@@ -27,7 +27,7 @@
                                                 <a href="{{route('sort')}}" class="sort">sort</a>
                                             </th>
                                             </div>
-                                            <th>Image</th>
+                                            <!-- <th>Image</th> -->
                                             <th class="text-right">Action</th>
                                         </tr>
                                     </thead>
@@ -36,7 +36,7 @@
                                             <tr>
                                                 <td>{{ $newProduct->id }}</td>
                                                 <td>{{ $newProduct->name }}</td>
-                                                <td>{{ $newProduct->name }}</td>
+                                                <!-- <td>{{ $newProduct->name }}</td> -->
                                                 <td class="project-actions text-right">
                                                     <form
                                                         action="{{route('new-product.destroy', ['new_product'=>$newProduct->id])}}"

@@ -48,8 +48,18 @@ class NewProductController extends Controller
             'description' => 'required',
             'price' => 'required'
         ]);
+        $image = $request->image;
+        $new_image = time().$image->getClientOriginalName();
+        $image->move('images', $new_image);
         // dd($request->all());
-        $newProduct = NewProduct::create($request->all());
+        $newProduct = NewProduct::create([
+            'name' => $request['name'],
+            'image' => 'images/' . $new_image,
+            'category_id' => $request['category_id'],
+            'subcategory_id' => $request['subcategory_id'],
+            'description' => $request['description'],
+            'price' => $request['price'],
+        ]);
         return redirect()->back();
     }
 
