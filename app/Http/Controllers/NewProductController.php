@@ -26,7 +26,7 @@ class NewProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $newProducts = NewProduct::all();
         return view('admin.Product.index', compact('newProducts'));
@@ -43,14 +43,14 @@ class NewProductController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'image' => 'required',
-            'category' => 'required',
-            'subcategory' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
             'description' => 'required',
             'price' => 'required'
         ]);
         // dd($request->all());
         $newProduct = NewProduct::create($request->all());
-        return redirect()->route('new-product.show');
+        return redirect()->back();
     }
 
     /**
@@ -89,8 +89,8 @@ class NewProductController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'image' => 'required',
-            'category' => 'required',
-            'subcategory' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
             'description' => 'required',
             'price' => 'required'
         ]);
@@ -109,4 +109,18 @@ class NewProductController extends Controller
         $newProduct->delete();
         return redirect()->back();
     }
+    public function search(Request $request)
+    {
+        $search = $_GET['search'];
+        $newProducts= NewProduct::where('name', "LIKE", "%" . $search . "%")->get();
+        return view('admin.Product.search', compact('newProducts'));
+    }
+
+    public function sort()
+        {
+            // dd("being sorting");
+            $newProducts = NewProduct::orderBy('name')->get();
+            return view('admin.Product.index', compact('newProducts'));
+        }
+    
 }

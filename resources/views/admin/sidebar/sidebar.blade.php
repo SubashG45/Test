@@ -2,7 +2,7 @@
     <div class="card-header text-center text-bold">{{"Sidebar"}}</div>
     <div class="card-body text-decoration-none">
         <div class="mb-3">
-            <a class="form-control" href="/home">Dashboard</a>
+            <a class="form-control" href="{{route('home')}}">Dashboard</a>
         </div>
         <div class="mb-3">
             <a class="form-control" href="{{route('category.index')}}">Category</a>

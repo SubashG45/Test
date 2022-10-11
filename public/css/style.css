@@ -4,3 +4,11 @@ a{
 button{
     margin-left: 5px !important;
 }
+#search{
+    border: none;
+    outline: none;
+}
+.sort{
+    cursor: pointer;
+    color: black;
+}

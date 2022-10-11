@@ -3,12 +3,6 @@
 <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <form action="{{route('search')}}" method="GET" class="d-flex items-center">
-                    <div class="form-group" class="col-8">
-                        <input type="search" id="search" name="search" placeholder="Search by Name">
-                    </div>
-                    <button class="btn btn-primary">Search</button>
-                </form>
                 <div class="row">
                 <div class="col-12 mt-2">
                         <div class="card">
@@ -22,11 +16,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <div>
-                                            <th class="d-flex justify-content-around">Name
-                                                <a href="{{route('sort')}}" class="sort">sort</a>
-                                            </th>
-                                            </div>
+                                            <th>Name</th>
                                             <th>Image</th>
                                             <th class="text-right">Action</th>
                                         </tr>
