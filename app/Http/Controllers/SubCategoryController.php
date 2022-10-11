@@ -36,6 +36,9 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'sub_category' => 'required'
+        ]);
         $subCategory = SubCategory::create($request->all());
         return redirect()->back();
     }
@@ -71,6 +74,9 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, SubCategory $subCategory)
     {
+        $this->validate($request, [
+            'sub_category' => 'required'
+        ]);
         $subCategory->update($request->all());
         return redirect()->route('sub-category.index');
     }

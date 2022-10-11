@@ -28,7 +28,8 @@ class NewProductController extends Controller
      */
     public function create()
     {
-        //
+        $newProducts = NewProduct::all();
+        return view('admin.Product.index', compact('newProducts'));
     }
 
     /**
@@ -39,7 +40,17 @@ class NewProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'required',
+            'category' => 'required',
+            'subcategory' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+        // dd($request->all());
+        $newProduct = NewProduct::create($request->all());
+        return redirect()->route('new-product.show');
     }
 
     /**
@@ -61,7 +72,9 @@ class NewProductController extends Controller
      */
     public function edit(NewProduct $newProduct)
     {
-        //
+        $categories = Category::all();
+        $subcategories = SubCategory::all();
+        return view('admin.Product.edit', compact('newProduct', 'categories', 'subcategories'));
     }
 
     /**
@@ -73,7 +86,16 @@ class NewProductController extends Controller
      */
     public function update(Request $request, NewProduct $newProduct)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'required',
+            'category' => 'required',
+            'subcategory' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+        $newProduct->update($request->all());
+        return redirect()->route('new-product.show');
     }
 
     /**
@@ -84,6 +106,7 @@ class NewProductController extends Controller
      */
     public function destroy(NewProduct $newProduct)
     {
-        //
+        $newProduct->delete();
+        return redirect()->back();
     }
 }

@@ -11,7 +11,7 @@
             <a class="form-control" href="{{route('sub-category.index')}}">Sub-Category</a>
         </div>
         <div class="mb-3">
-            <a class="form-control" href="">Products</a>
+            <a class="form-control" href="{{route('new-product.create')}}">Products</a>
         </div>
         <div class="mb-3">
             <a class="form-control" href="{{route('new-product.index')}}">New Products</a>

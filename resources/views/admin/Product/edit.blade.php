@@ -7,17 +7,18 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header" style="cursor: pointer" data-card-widget="collapse" title="Collapse">
-                                <h3 class="card-title">Add New Product</h3>
+                                <h3 class="card-title">Edit Product : {{$newProduct->name}}</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('new-product.store')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('new-product.update', ['new_product'=>$newProduct->id])}}" method="POST">
                                     @csrf
-                                        <div class="row">
+                                    @method('put')
+                                    <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group">
                                                     <label class="required fw-bold pb-1" for="inputName">Name</label>
                                                     <input autocomplete="off" type="text" id="inputName" name="name"
-                                                    class="form-control" required value="{{ old('name') }}"
+                                                    class="form-control" required value="{{ $newProduct->name }}"
                                                     placeholder="Name">
 
                                                     @error('name')
@@ -30,7 +31,7 @@
                                                 <div class="form-group">
                                                     <label class="required fw-bold pb-1" for="inputName">Price</label>
                                                     <input autocomplete="off" type="text" id="inputName" name="price"
-                                                    class="form-control" required value="{{ old('price') }}"
+                                                    class="form-control" required value="{{ $newProduct->price }}"
                                                     placeholder="Price">
 
                                                     @error('price')
@@ -42,8 +43,7 @@
                                                 <div class="form-group">
                                                     <label class="required fw-bold pb-1" for="inputName">Description</label>
                                                     <textarea autocomplete="off" type="text" id="inputName" name="description"
-                                                    class="form-control" required value="{{ old('description') }}"
-                                                    placeholder="description"></textarea>
+                                                    class="form-control" required value="{{ $newProduct->description }}"></textarea>
 
                                                     @error('description')
                                                     <span class="invalid-feedback" role="alert">

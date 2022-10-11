@@ -36,6 +36,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'category' => 'required'
+        ]);
         $categories = Category::create($request->all());
         return redirect()->back();
 
@@ -72,6 +75,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $this->validate($request, [
+            'category' => 'required'
+        ]);
         $category->update($request->all());
         return redirect()->route('category.index');
     }
